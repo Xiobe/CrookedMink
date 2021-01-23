@@ -53,7 +53,7 @@ rem Display the services
 tasklist /svc /fo list > %TEMP%\discovery\T1057_tasklist_services.txt
 
 rem Display the apps
-tasklist /app /fo list > %TEMP%\discovery\T1057_tasklist_app.txt
+tasklist /apps /fo list > %TEMP%\discovery\T1057_tasklist_app.txt
 
 rem Display the started network services
 net start > %TEMP%\discovery\T1057_net_start.txt
