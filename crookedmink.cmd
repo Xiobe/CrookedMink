@@ -69,3 +69,17 @@ net user Administrator > %TEMP%\discovery\T1087_local_admin_detail.txt
 
 rem Display local user
 net user %username% > %TEMP%\discovery\T1087_local_%username%_detail.txt
+
+rem Display the shares of the local system presented to the network
+rem C$ is the default share
+rem IPC$ is the remote IPC share
+rem ADMIN$ is the remote Admin share
+net share > %TEMP%\discovery\T1135_local_shares.txt
+
+rem Display active SMB sessions on local system so you can see which users have
+rem connections.
+if %ERRORLEVEL EQU 0 (
+   net session | find "\\" > %TEMP%\discovery\T1049_SMB_sessions.txt
+) else (
+   echo "Executed with no administrative privileges" > %TEMP%\discovery\T1049_SMB_sessions.txt
+)
